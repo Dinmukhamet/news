@@ -8,40 +8,91 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255, verbose_name='Title')),
-                ('link', models.URLField(verbose_name='Link')),
-                ('author_name', models.CharField(max_length=100, verbose_name='Author Name')),
-                ('upvotes', models.PositiveIntegerField(verbose_name='Amount of upvotes')),
-                ('creation_date', models.DateTimeField(auto_now_add=True, verbose_name='Creation Date')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=255, verbose_name="Title")),
+                ("link", models.URLField(verbose_name="Link")),
+                (
+                    "author_name",
+                    models.CharField(max_length=100, verbose_name="Author Name"),
+                ),
+                (
+                    "upvotes",
+                    models.PositiveIntegerField(verbose_name="Amount of upvotes"),
+                ),
+                (
+                    "creation_date",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Creation Date"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Post',
-                'verbose_name_plural': 'Posts',
-                'db_table': 'posts',
+                "verbose_name": "Post",
+                "verbose_name_plural": "Posts",
+                "db_table": "posts",
             },
         ),
         migrations.CreateModel(
-            name='Comment',
+            name="Comment",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('author_name', models.CharField(max_length=100, verbose_name='Author Name')),
-                ('content', models.TextField(verbose_name='Content')),
-                ('creation_date', models.DateTimeField(auto_now_add=True, verbose_name='Creation Date')),
-                ('parent', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='posts.comment', verbose_name='Parent comment')),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments', to='posts.post', verbose_name='Post')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "author_name",
+                    models.CharField(max_length=100, verbose_name="Author Name"),
+                ),
+                ("content", models.TextField(verbose_name="Content")),
+                (
+                    "creation_date",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Creation Date"
+                    ),
+                ),
+                (
+                    "parent",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="posts.comment",
+                        verbose_name="Parent comment",
+                    ),
+                ),
+                (
+                    "post",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="comments",
+                        to="posts.post",
+                        verbose_name="Post",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Comment',
-                'verbose_name_plural': 'Comments',
-                'db_table': 'comments',
+                "verbose_name": "Comment",
+                "verbose_name_plural": "Comments",
+                "db_table": "comments",
             },
         ),
     ]

@@ -1,13 +1,8 @@
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
-from posts.serializers import (
-    PostSerializer,
-    CommentSerializer
-)
+from posts.serializers import PostSerializer, CommentSerializer
 
-from posts.models import (
-    Post, Comment
-)
+from posts.models import Post, Comment
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from django.db.models import F
@@ -17,6 +12,7 @@ class PostViewSet(viewsets.ModelViewSet):
     """
     A viewset to handle requests related to Post
     """
+
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
@@ -35,6 +31,7 @@ class CommentViewSet(viewsets.ModelViewSet):
     1) Get by specific post
     2) Get by parent comment
     """
-    filterset_fields = ['post', 'parent']
+
+    filterset_fields = ["post", "parent"]
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer

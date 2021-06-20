@@ -20,10 +20,19 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey("posts.Post", verbose_name=_(
-        "Post"), related_name="comments", on_delete=models.CASCADE)
-    parent = models.ForeignKey("self", verbose_name=_(
-        "Parent comment"), on_delete=models.SET_NULL, null=True, blank=True)
+    post = models.ForeignKey(
+        "posts.Post",
+        verbose_name=_("Post"),
+        related_name="comments",
+        on_delete=models.CASCADE,
+    )
+    parent = models.ForeignKey(
+        "self",
+        verbose_name=_("Parent comment"),
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
     author_name = models.CharField(_("Author Name"), max_length=100)
     content = models.TextField(_("Content"))
 
