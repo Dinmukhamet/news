@@ -1,4 +1,5 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.decorators import action
 from posts.serializers import (
     PostSerializer,
     CommentSerializer
@@ -7,6 +8,9 @@ from posts.serializers import (
 from posts.models import (
     Post, Comment
 )
+from django.shortcuts import get_object_or_404
+from rest_framework.response import Response
+from django.db.models import F
 
 
 class PostViewSet(viewsets.ModelViewSet):
@@ -15,6 +19,13 @@ class PostViewSet(viewsets.ModelViewSet):
     """
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+
+    @action(methods=["post"], detail=True, url_path="upvote")
+    def upvote(self, request, pk):
+        instance = get_object_or_404(self.queryset, pk=pk)
+        self.queryset.filter(pk=pk).update(upvotes=F("upvotes") + 1)
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class CommentViewSet(viewsets.ModelViewSet):
