@@ -76,7 +76,7 @@ And you are good to go
 
 https://develops-today-news.herokuapp.com/
 
-## Linting & Formatting
+## Linting and Formatting
 
 Linting completed with flake8
 ```bash
