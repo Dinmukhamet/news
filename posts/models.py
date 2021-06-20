@@ -6,7 +6,7 @@ class Post(models.Model):
     title = models.CharField(_("Title"), max_length=255)
     link = models.URLField(_("Link"), max_length=200)
     author_name = models.CharField(_("Author Name"), max_length=100)
-    upvotes = models.PositiveIntegerField(_("Amount of upvotes"))
+    upvotes = models.PositiveIntegerField(_("Amount of upvotes"), default=0)
 
     creation_date = models.DateTimeField(_("Creation Date"), auto_now_add=True)
 
