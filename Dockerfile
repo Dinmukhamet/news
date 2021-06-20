@@ -23,5 +23,9 @@ RUN pip install -r requirements.txt
 # copy project
 COPY . .
 
+# collect static files
+RUN mkdir /app/static
+RUN python manage.py collectstatic --noinput
+
 # run gunicorn
-CMD gunicorn news.wsgi:application --bind 0.0.0.0:$PORT
+CMD gunicorn news.wsgi:application --log-level INFO --bind 0.0.0.0:$PORT
