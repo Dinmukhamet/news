@@ -22,7 +22,7 @@ env = environ.Env(
 )
 # reading .env file
 env_path = str(BASE_DIR / ".env")
-environ.Env.read_env(env_path)
+environ.Env.read_env()
 
 
 # Quick-start development settings - unsuitable for production
