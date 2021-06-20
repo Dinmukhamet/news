@@ -24,7 +24,7 @@ class PostViewSet(viewsets.ModelViewSet):
     def upvote(self, request, pk):
         get_object_or_404(self.queryset, pk=pk)
         self.queryset.filter(pk=pk).update(upvotes=F("upvotes") + 1)
-        serializer = self.get_serializer(self.queryset.objects.get(pk=pk))
+        serializer = self.get_serializer(self.queryset.get(pk=pk))
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
