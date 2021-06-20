@@ -7,8 +7,7 @@ News App is a test assessment for DevelopsToday
 * [Setup](#setup)
 * [Documentation](#documentation)
 * [Deployment link](#deployment-link)
-
-
+* [Linting & Formatting](#linting-and-formatting)
 
 ## Setup
 ### Via Docker
@@ -76,3 +75,15 @@ And you are good to go
 ## Deployment link
 
 https://develops-today-news.herokuapp.com/
+
+## Linting & Formatting
+
+Linting completed with flake8
+```bash
+flake8 --ignore E501 .
+```
+
+Formatting completed with black
+```bash
+black .
+```
