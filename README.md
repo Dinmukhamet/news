@@ -6,6 +6,7 @@ News App is a test assessment for DevelopsToday
 
 * [Setup](#setup)
 * [Documentation](#documentation)
+* [Deployment link](#deployment-link)
 
 
 
@@ -71,3 +72,7 @@ And you are good to go
 
 * Link to the [docs](https://documenter.getpostman.com/view/8822784/TzeZERwo)
 * Link to the [collection](https://www.getpostman.com/collections/670f6ec08cabdf1a913b)
+
+## Deployment link
+
+https://develops-today-news.herokuapp.com/
